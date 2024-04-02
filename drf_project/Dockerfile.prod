@@ -28,4 +28,4 @@ RUN adduser --disabled-password myuser
 USER myuser
 
 # run gunicorn
-CMD gunicorn --bind :${PORT} --workers 2 drf_project.wsgi
+CMD gunicorn --bind :${PORT} --workers 2 ./drf_project.wsgi:application
