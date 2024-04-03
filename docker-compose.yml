@@ -12,6 +12,11 @@ services:
       - ./drf_project/.env.dev
     depends_on:
       - movies-db
+    environment:
+      - PYTHONDONTWRITEBYTECODE=1
+      - PYTHONUNBUFFERED=1
+      - DJANGO_ALLOWED_HOSTS=*
+
   movies-db:
     image: postgres:14-alpine
     volumes:
@@ -20,5 +25,6 @@ services:
       - POSTGRES_USER=movies
       - POSTGRES_PASSWORD=movies
       - POSTGRES_DB=movies_dev
+
 volumes:
   postgres_data:

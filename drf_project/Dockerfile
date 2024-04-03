@@ -1,30 +1,26 @@
-FROM python
+FROM python:3.10.1-slim-buster
 
 # set working directory
 WORKDIR /usr/src/app
 
 # set environment variables
-ENV PYTHONDONTWRITEBYTECODE 1
-ENV PYTHONUNBUFFERED 1
+ENV SECRET_KEY 'django-insecure-ruoqx5tb)1%a6(#jf+rh-pez!+s#z7e64$q@kery(r=vyrf#*8'
 
 # install system dependencies
 RUN apt-get update \
-  && apt-get -y install gcc postgresql netcat-openbsd \
+  && apt-get -y install gcc postgresql netcat-openbsd\
   && apt-get clean
 
-
-# install dependencies
+# add and install requirements
 RUN pip install --upgrade pip
 COPY ./requirements.txt .
 RUN pip install -r requirements.txt
 
-
-# copy entrypoint.sh
-COPY ./entrypoint.sh /usr/src/app/entrypoint.sh
-RUN chmod +x /usr/src/app/entrypoint.sh
-
 # add app
 COPY . .
 
-# run entrypoint.sh
-ENTRYPOINT ["/usr/src/app/entrypoint.sh"]
+
+# run gunicorn
+
+
+CMD gunicorn --workers 2 drf_project.wsgi:application
