@@ -3,7 +3,7 @@ version: "3.8"
 services:
   movies:
     build:
-        context: ./drf_project
+        context: ./drf_project/
     command: python manage.py runserver 0.0.0.0:8000
     volumes:
       - ./drf_project/:/usr/src/app/
