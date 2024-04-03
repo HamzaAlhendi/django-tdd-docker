@@ -24,4 +24,4 @@ COPY . .
 # run gunicorn
 
 
-ENTRYPOINT gunicorn --workers 2 drf_project.wsgi:application
+ENTRYPOINT gunicorn --workers 2 drf_project.drf_project.wsgi:application
