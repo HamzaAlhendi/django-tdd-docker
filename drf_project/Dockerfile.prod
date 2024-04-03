@@ -23,4 +23,4 @@ COPY . .
 # run gunicorn
 
 
-CMD gunicorn --workers 2 drf_project.wsgi:application
+CMD gunicorn --workers 2 drf_project.drf_project.wsgi:application
