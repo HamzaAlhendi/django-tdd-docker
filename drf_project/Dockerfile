@@ -14,7 +14,7 @@ RUN apt-get update \
 # add and install requirements
 RUN pip install --upgrade pip
 RUN ls
-COPY ./requirements.txt .
+COPY ./drf_project/requirements.txt .
 RUN pip install -r requirements.txt
 
 # add app
